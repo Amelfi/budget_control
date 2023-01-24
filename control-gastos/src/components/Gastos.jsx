@@ -15,7 +15,8 @@ import {
     TrailingActions,
   } from 'react-swipeable-list';
 import 'react-swipeable-list/dist/styles.css';
-const Gastos = ({gasto}) => {
+const Gastos = ({gasto, setGastoEditar, eliminarGastos}) => {
+  console.log(gasto)
     const diccionario={
                     ahorro: IconoAhorro,
                     comida: IconoComida,
@@ -28,8 +29,8 @@ const Gastos = ({gasto}) => {
 
     const leadingActions = () => (
         <LeadingActions>
-          <SwipeAction onClick={() => console.info('swipe action triggered')}>
-            Action name
+          <SwipeAction onClick={() => setGastoEditar(gasto)}>
+            Editar
           </SwipeAction>
         </LeadingActions>
       );
@@ -38,7 +39,7 @@ const Gastos = ({gasto}) => {
         <TrailingActions>
           <SwipeAction
             destructive={true}
-            onClick={() => console.info('swipe action triggered')}
+            onClick={() => eliminarGastos(gasto.id)}
           >
             Delete
           </SwipeAction>
